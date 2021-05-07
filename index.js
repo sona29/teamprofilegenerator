@@ -50,7 +50,7 @@ inquirer
         addEngineerInfo();
 
     } 
-    elseif (answers.emptype === 'Intern'){
+    else if (answers.emptype === 'Intern'){
         addInternInfo();
     }
     
