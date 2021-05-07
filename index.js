@@ -78,7 +78,7 @@ inquirer
             message: "What is engineers github name",            
         }
     ])
-    .then(engineerInfo) => {
+    .then((engineerInfo) => {
         const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
         employeeData.push(newEngineer); 
         console.log(newEngineer); 
