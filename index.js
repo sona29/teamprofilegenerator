@@ -3,9 +3,13 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 //library js
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
-const manager = require('./lib/manager'); 
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const Manager = require('./lib/manager'); 
+
+
+// array for storing team members info
+const employeeData = []; 
 
 inquirer
   .prompt([
@@ -39,5 +43,42 @@ inquirer
 
   ])
   .then((answers) => {
+     
+    const newManager = new Manager(answers.mnumber,answers.mname,answers.mid,answers.memail);
+    employeeData.push(newManager); 
+    console.log(newManager); 
     
   });
+
+
+  const addEngineerInfo = () => {
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'ename',
+            message: 'What is the engineer name?', 
+           
+        },
+        {
+            type: 'input',
+            name: 'eid',
+            message: "What is the engineer id?",           
+        },
+        {
+            type: 'input',
+            name: 'eemail',
+            message: "Please enter the manager's email.",            
+        },
+        {
+            type: 'input',
+            name: 'githubname',
+            message: "What is engineers github name",            
+        }
+    ])
+    .then(engineerInfo) => {
+        const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
+        employeeData.push(newEngineer); 
+        console.log(newEngineer); 
+        
+    })
+};
