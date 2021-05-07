@@ -7,6 +7,8 @@ const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager'); 
 
+const generateTeamProfile = require('./src/generateTeamProfile');
+
 
 // array for storing team members info
 const employeeData = []; 
