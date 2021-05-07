@@ -46,7 +46,7 @@ inquirer
      
     const newManager = new Manager(answers.mnumber,answers.mname,answers.mid,answers.memail);
     employeeData.push(newManager); 
-    if(answers.list === 'Engineer'){
+    if(answers.emptype === 'Engineer'){
         addEngineerInfo();
 
     }  
@@ -70,7 +70,7 @@ inquirer
         {
             type: 'input',
             name: 'eemail',
-            message: "Please enter the manager's email.",            
+            message: "Please enter the engineer's email.",            
         },
         {
             type: 'input',
@@ -81,7 +81,7 @@ inquirer
     .then((engineerInfo) => {
         const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
         employeeData.push(newEngineer); 
-        console.log(newEngineer); 
+        console.log(employeeData); 
         
     });
 };
