@@ -49,11 +49,14 @@ inquirer
     if(answers.emptype === 'Engineer'){
         addEngineerInfo();
 
-    }  
+    } 
+    elseif (answers.emptype === 'Intern'){
+        addInternInfo();
+    }
     
   });
 
-
+//function for adding engineer team member info
   const addEngineerInfo = () => {
     return inquirer.prompt ([
         {
@@ -76,11 +79,57 @@ inquirer
             type: 'input',
             name: 'githubname',
             message: "What is engineers github name",            
+        },
+        {
+            type: "list",
+            name: "emptype",
+            message: "Which type of team member would you like to add?",        
+            choices: ["Engineer", "Intern", "I dont want to add any more team members"]
         }
     ])
     .then((engineerInfo) => {
         const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
         employeeData.push(newEngineer); 
+        console.log(employeeData); 
+        
+    });
+};
+
+
+//function for adding engineer team member info
+const addInternInfo = () => {
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'iname',
+            message: 'What is the intern name?', 
+           
+        },
+        {
+            type: 'input',
+            name: 'iid',
+            message: "What is the intern id?",           
+        },
+        {
+            type: 'input',
+            name: 'iemail',
+            message: "What is intern's email.",            
+        },
+        {
+            type: 'input',
+            name: 'ischool',
+            message: "Which school did intern attend",            
+        },
+        {
+            type: "list",
+            name: "emptype",
+            message: "Which type of team member would you like to add?",        
+            choices: ["Engineer", "Intern", "I dont want to add any more team members"]
+        }
+    ])
+    .then((internInfo) => {
+        const newIntern = new Intern(internInfo.ischool,internInfo.iname,internInfo.iid,internInfo.iemail);
+        employeeData.push(newIntern); 
         console.log(employeeData); 
         
     });
