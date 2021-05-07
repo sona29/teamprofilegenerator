@@ -46,7 +46,10 @@ inquirer
      
     const newManager = new Manager(answers.mnumber,answers.mname,answers.mid,answers.memail);
     employeeData.push(newManager); 
-    console.log(newManager); 
+    if(answers.list === 'Engineer'){
+        addEngineerInfo();
+
+    }  
     
   });
 
@@ -80,5 +83,5 @@ inquirer
         employeeData.push(newEngineer); 
         console.log(newEngineer); 
         
-    })
+    });
 };
