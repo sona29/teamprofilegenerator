@@ -10,9 +10,9 @@ const Manager = require('./lib/manager');
 const generateTeamProfile = require('./src/generateTeamProfile');
 
 //function to generate HTML
-function genHTML(employeeData){
-    const htmlPageContent = generateTeamProfile(employeeData);
-    console.log(employeeData);
+function genHTML(empData){
+    const htmlPageContent = generateTeamProfile(empData);
+    console.log(empData);
 
     fs.writeFile('index.html', htmlPageContent, (err) =>
       err ? console.log(err) : console.log('Successfully created team profile page!')
