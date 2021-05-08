@@ -10,7 +10,7 @@ const Manager = require('./lib/manager');
 const generateTeamProfile = require('./src/generateTeamProfile');
 
 //function to generate HTML
-function genHTML(){
+function genHTML(employeeData){
     const htmlPageContent = generateTeamProfile(employeeData);
     console.log(employeeData);
 
@@ -67,7 +67,7 @@ inquirer
     }
 
     else if(answers.emptype === 'I dont want to add any more team members'){
-        genHTML();
+        genHTML(employeeData);
 
     }
   
