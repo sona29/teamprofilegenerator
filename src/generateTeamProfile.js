@@ -3,12 +3,12 @@ const generateManagerInfo = (manager) => {
     return `
     <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">Jared <br> Manager <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${manager.mname} <br> Manager <i class="fas fa-glasses"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : 1</li>
-                  <li class="list-group-item">Email : test@test.com</li>
-                  <li class="list-group-item">Office Number: 25</li>
+                  <li class="list-group-item">ID : ${manager.mid}</li>
+                  <li class="list-group-item">Email : ${manager.memail}</li>
+                  <li class="list-group-item">Office Number: ${manager.mnumber}</li>
                 </ul>
               </div>
           </div>
@@ -34,7 +34,7 @@ const generateTeamProfile =  (employeeInfo) => {
     
       <!-- page header -->
         <div class="jumbotron">
-            <h1 class="display-4">${employeeinfo}/h1>        
+            <h1 class="display-4">${JSON.stringify(employeeInfo)}/h1>        
         </div>
     
         <div class="container">
