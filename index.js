@@ -55,7 +55,13 @@ inquirer
     else if (answers.emptype === 'Intern'){
         addInternInfo();
     }
-    
+  
+    const htmlPageContent = generateTeamProfile(employeeData);
+    console.log(employeeData);
+
+    fs.writeFile('index.html', htmlPageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created team profile page!')
+    );
   });
 
 //function for adding engineer team member info
