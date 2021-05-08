@@ -9,6 +9,16 @@ const Manager = require('./lib/manager');
 
 const generateTeamProfile = require('./src/generateTeamProfile');
 
+//function to generate HTML
+function genHTML(){
+    const htmlPageContent = generateTeamProfile(employeeData);
+    console.log(employeeData);
+
+    fs.writeFile('index.html', htmlPageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created team profile page!')
+    );
+}
+
 
 // array for storing team members info
 const employeeData = []; 
@@ -55,13 +65,13 @@ inquirer
     else if (answers.emptype === 'Intern'){
         addInternInfo();
     }
-  
-    const htmlPageContent = generateTeamProfile(employeeData);
-    console.log(employeeData);
 
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created team profile page!')
-    );
+    else if(answers.emptype === 'I dont want to add any more team members'){
+        genHTML();
+
+    }
+  
+    
   });
 
 //function for adding engineer team member info
