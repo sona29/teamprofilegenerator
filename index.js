@@ -110,7 +110,7 @@ inquirer
         employeeData.push(newEngineer); 
         console.log(employeeData); 
         if(engineerInfo.emptype === 'I dont want to add any more team members'){
-            genHTML();
+            genHTML(employeeData);
         }
         
     });
@@ -153,7 +153,7 @@ const addInternInfo = () => {
         employeeData.push(newIntern); 
         console.log(employeeData); 
         if(engineerInfo.emptype === 'I dont want to add any more team members'){
-            genHTML();
+            genHTML(employeeData);
         }
         
     });
