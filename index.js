@@ -109,6 +109,9 @@ inquirer
         const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
         employeeData.push(newEngineer); 
         console.log(employeeData); 
+        if(engineerInfo.emptype === 'I dont want to add any more team members'){
+            genHTML();
+        }
         
     });
 };
@@ -149,6 +152,9 @@ const addInternInfo = () => {
         const newIntern = new Intern(internInfo.ischool,internInfo.iname,internInfo.iid,internInfo.iemail);
         employeeData.push(newIntern); 
         console.log(employeeData); 
+        if(engineerInfo.emptype === 'I dont want to add any more team members'){
+            genHTML();
+        }
         
     });
 };
