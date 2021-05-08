@@ -23,6 +23,7 @@ function genHTML(empData){
 // array for storing team members info
 const employeeData = []; 
 
+//starting questions for manager
 inquirer
   .prompt([
     {
@@ -58,14 +59,17 @@ inquirer
      
     const newManager = new Manager(answers.mnumber,answers.mname,answers.mid,answers.memail);
     employeeData.push(newManager); 
+    //if engineer is selected
     if(answers.emptype === 'Engineer'){
         addEngineerInfo();
-
     } 
+
+    //if Intern is selected
     else if (answers.emptype === 'Intern'){
         addInternInfo();
     }
 
+    //if user does not want to add any more team member
     else if(answers.emptype === 'I dont want to add any more team members'){
         genHTML(employeeData);
 
@@ -112,6 +116,15 @@ inquirer
         if(engineerInfo.emptype === 'I dont want to add any more team members'){
             genHTML(employeeData);
         }
+
+        else if (engineerInfo.emptype === 'Intern'){
+            console.log('Intern section');
+            addInternInfo();
+        }
+
+        else if (engineerInfo.emptype === 'Engineer'){
+            addEngineerInfo();
+        }
         
     });
 };
@@ -152,7 +165,7 @@ const addInternInfo = () => {
         const newIntern = new Intern(internInfo.ischool,internInfo.iname,internInfo.iid,internInfo.iemail);
         employeeData.push(newIntern); 
         console.log(employeeData); 
-        if(engineerInfo.emptype === 'I dont want to add any more team members'){
+        if(internInfo.emptype === 'I dont want to add any more team members'){
             genHTML(employeeData);
         }
         
