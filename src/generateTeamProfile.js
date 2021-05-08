@@ -16,10 +16,46 @@ const generateManagerInfo = (manager) => {
 }
 
 
+// engineer section
+const generateEngineerInfo = (engineer) => {
+  return `
+  <div class="col-sm-4 py-2">
+              <div class="card card-body h-100">
+                <h3 class="card-title">${engineer.ename} <br> Engineer <i class="fas fa-glasses"></i></h3>
+               
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID : ${engineer.eid}</li>
+                  <li class="list-group-item">Email : ${engineer.eemail}</li>
+                  <li class="list-group-item">Github: ${engineer.github}</li>
+                </ul>
+              </div>
+          </div>
+  `
+}
+
+// intern section
+const generateInternInfo = (intern) => {
+  return `
+  <div class="col-sm-4 py-2">
+              <div class="card card-body h-100">
+                <h3 class="card-title">${intern.iname} <br> Intern <i class="fas fa-glasses"></i></h3>
+               
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ID : ${intern.iid}</li>
+                  <li class="list-group-item">Email : ${intern.iemail}</li>
+                  <li class="list-group-item">School Name: ${intern.ischool}</li>
+                </ul>
+              </div>
+          </div>
+  `
+}
+
+
 // generate html page 
 const generateTeamProfile =  (employeeInfo) => {   
+  let html = 
   
-    return `
+   `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -34,51 +70,25 @@ const generateTeamProfile =  (employeeInfo) => {
     
       <!-- page header -->
         <div class="jumbotron">
-            <h1 class="display-4">${JSON.stringify(employeeInfo)}/h1>        
+            <h1 class="display-4">My Team</h1>        
         </div>
     
         <div class="container">
         
           <div class="row">
+          `;
+          const setData = JSON.stringify(employeeInfo);
+         const getData = JSON.parse(setData);
+
+         for (let i = 0; i < getData.length; i++) {
+          console.log(getData[i]['name']);
+      }
+
     
-              <div class="col-sm-4 py-2">
-                  <div class="card card-body h-100">
-                    <h3 class="card-title">Jared <br> Manager <i class="fas fa-glasses"></i></h3>
-                   
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">ID : 1</li>
-                      <li class="list-group-item">Email : test@test.com</li>
-                      <li class="list-group-item">Office Number: 25</li>
-                    </ul>
-                  </div>
-              </div>
-    
-              <div class="col-sm-4 py-2">
-                <div class="card card-body h-100">
-                  <h5 class="card-title">Card title <i class="fas fa-chalkboard-teacher"></i></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
-                </div>
-            </div>
-    
-              <div class="col-sm-4 py-2">
-                <div class="card card-body h-100">
-                  <h5 class="card-title">Card title <i class="fas fa-user-graduate"></i></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
-                </div>
-            </div>
+              
              
               
-          </div>
+         html+=` </div>
     
           
       </div>
@@ -90,7 +100,7 @@ const generateTeamProfile =  (employeeInfo) => {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
     </body>
     </html>`;
-
+return html;
 
     
   }
