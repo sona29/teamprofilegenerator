@@ -3,12 +3,12 @@ const generateManagerInfo = (manager) => {
     return `
     <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">${manager.mname} <br> Manager <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${manager.name} <br> Manager <i class="fas fa-glasses"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${manager.mid}</li>
-                  <li class="list-group-item">Email : ${manager.memail}</li>
-                  <li class="list-group-item">Office Number: ${manager.mnumber}</li>
+                  <li class="list-group-item">ID : ${manager.id}</li>
+                  <li class="list-group-item">Email : ${manager.email}</li>
+                  <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
                 </ul>
               </div>
           </div>
@@ -21,11 +21,11 @@ const generateEngineerInfo = (engineer) => {
   return `
   <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">${engineer.ename} <br> Engineer <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${engineer.name} <br> Engineer <i class="fas fa-glasses"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${engineer.eid}</li>
-                  <li class="list-group-item">Email : ${engineer.eemail}</li>
+                  <li class="list-group-item">ID : ${engineer.id}</li>
+                  <li class="list-group-item">Email : ${engineer.email}</li>
                   <li class="list-group-item">Github: ${engineer.github}</li>
                 </ul>
               </div>
@@ -38,12 +38,12 @@ const generateInternInfo = (intern) => {
   return `
   <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">${intern.iname} <br> Intern <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${intern.name} <br> Intern <i class="fas fa-glasses"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${intern.iid}</li>
-                  <li class="list-group-item">Email : ${intern.iemail}</li>
-                  <li class="list-group-item">School Name: ${intern.ischool}</li>
+                  <li class="list-group-item">ID : ${intern.id}</li>
+                  <li class="list-group-item">Email : ${intern.email}</li>
+                  <li class="list-group-item">School Name: ${intern.school}</li>
                 </ul>
               </div>
           </div>
@@ -77,11 +77,20 @@ const generateTeamProfile =  (employeeInfo) => {
         
           <div class="row">
           `;
-          const setData = JSON.stringify(employeeInfo);
-         const getData = JSON.parse(setData);
+         
 
-         for (let i = 0; i < getData.length; i++) {
-          console.log(getData[i]['name']);
+         for (let i = 0; i < employeeInfo.length; i++) {
+          console.log(employeeInfo[i].name);
+          const employee = employeeInfo[i];
+
+          const role = employeeInfo[i].getRole();
+
+          if(role === 'Manager'){
+            html += generateManagerInfo(employee)
+
+
+          }
+          
       }
 
     
