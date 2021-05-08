@@ -3,7 +3,7 @@ const generateManagerInfo = (manager) => {
     return `
     <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">${manager.name} <br> Manager <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${manager.name} <br> Manager <i class="fas fa-chalkboard-teacher"></i></h3>
                
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">ID : ${manager.id}</li>
@@ -38,7 +38,7 @@ const generateInternInfo = (intern) => {
   return `
   <div class="col-sm-4 py-2">
               <div class="card card-body h-100">
-                <h3 class="card-title">${intern.name} <br> Intern <i class="fas fa-glasses"></i></h3>
+                <h3 class="card-title">${intern.name} <br> Intern <i class="fas fa-user-graduate"></i></h3>
                
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">ID : ${intern.id}</li>
@@ -86,10 +86,18 @@ const generateTeamProfile =  (employeeInfo) => {
           const role = employeeInfo[i].getRole();
 
           if(role === 'Manager'){
-            html += generateManagerInfo(employee)
-
-
+            html += generateManagerInfo(employee);
           }
+
+          if(role === 'Enginner'){
+            html += generateEngineerInfo(employee);
+          }
+
+          if(role === 'Intern'){
+            html += generateInternInfo(employee);
+          }
+
+
           
       }
 
