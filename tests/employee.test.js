@@ -47,7 +47,7 @@ it("Can set name via constructor arguments", () => {
     expect(obj.getEmail()).toBe(testEmail);
   });
   
-  it("getRole() should return \"Employee\"", () => {
+  it("getRole() should return Employee", () => {
     const testValue = "Employee";
     const obj = new Employee("Henry", 1, "test@test.com");
     expect(obj.getRole()).toBe(testValue);
