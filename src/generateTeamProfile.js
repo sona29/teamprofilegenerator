@@ -89,7 +89,7 @@ const generateTeamProfile =  (employeeInfo) => {
             html += generateManagerInfo(employee);
           }
 
-          if(role === 'Enginner'){
+          if(role === 'Engineer'){
             html += generateEngineerInfo(employee);
           }
 
@@ -99,9 +99,7 @@ const generateTeamProfile =  (employeeInfo) => {
 
 
           
-      }
-
-    
+      }  
               
              
               
