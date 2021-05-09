@@ -12,9 +12,9 @@ const generateTeamProfile = require('./src/generateTeamProfile');
 //function to generate HTML
 function genHTML(empData){
     const htmlPageContent = generateTeamProfile(empData);
-    console.log(empData);
+    // console.log(empData);
 
-    fs.writeFile('index.html', htmlPageContent, (err) =>
+    fs.writeFile('dist/index.html', htmlPageContent, (err) =>
       err ? console.log(err) : console.log('Successfully created team profile page!')
     );
 }
@@ -23,168 +23,115 @@ function genHTML(empData){
 // array for storing team members info
 const employeeData = []; 
 
-//starting questions for manager
-inquirer
-  .prompt([
-    {
-        type: 'input',
-        name: 'mname',
-        message: 'What is your team managers name?',
-      },
-      {
-        type: 'input',
-        name: 'mid',
-        message: 'What is your team managers id?',
-      },
-    {
-      type: 'input',
-      name: 'memail',
-      message: 'What is your team managers email?',
-    },
-    {
-      type: 'input',
-      name: 'mnumber',
-      message: 'What is your team managers office number?',
-    },   
-  
-    {
-        type: "list",
-        name: "emptype",
-        message: "Which type of team member would you like to add?",        
-        choices: ["Engineer", "Intern", "I dont want to add any more team members"]
-    },  
+//function for starting inquirer
+const addEmployeeInfo = () =>{
 
-  ])
-  .then((answers) => {
-     
-    const newManager = new Manager(answers.mnumber,answers.mname,answers.mid,answers.memail);
-    employeeData.push(newManager); 
-    //if engineer is selected
-    if(answers.emptype === 'Engineer'){
-        addEngineerInfo();
-    } 
-
-    //if Intern is selected
-    else if (answers.emptype === 'Intern'){
-        addInternInfo();
-    }
-
-    //if user does not want to add any more team member
-    else if(answers.emptype === 'I dont want to add any more team members'){
-        genHTML(employeeData);
-
-    }
-  
-    
-  });
-
-//function for adding engineer team member info
-  const addEngineerInfo = () => {
     return inquirer.prompt ([
         {
+            type: "list",
+            name: "emptype",
+            message: "Which type of team member would you like to add?",        
+            choices: ["Manager","Engineer", "Intern"]
+        },
+        {
             type: 'input',
-            name: 'ename',
-            message: 'What is the engineer name?', 
+            name: 'name',
+            message: 'What is the employee name?', 
            
         },
         {
             type: 'input',
-            name: 'eid',
-            message: "What is the engineer id?",           
+            name: 'id',
+            message: "What is the employee id?",  
+            validate(value){
+                
+                const foundEmp = employeeData.find(function (employee){
+
+                    return employee.getId() === value;
+                    
+                });
+
+                if(foundEmp){
+                    return 'This id was already assigned. Please use another id';
+                }
+                else {
+                    return true;
+                }
+
+            }                  
         },
         {
             type: 'input',
-            name: 'eemail',
-            message: "What is engineer's email address?",            
+            name: 'email',
+            message: "What is employee's email?",            
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "Which school did intern attend",  
+            when: function (answers) {
+                return answers.emptype === 'Intern';
+              },          
         },
         {
             type: 'input',
             name: 'githubname',
-            message: "What is engineers github name?",            
+            message: "What is engineers github name?",  
+            when: function (answers) {
+                return answers.emptype === 'Engineer';
+              },          
         },
         {
-            type: "list",
-            name: "emptype",
-            message: "Which type of team member would you like to add?",        
-            choices: ["Engineer", "Intern", "I dont want to add any more team members"]
-        }
+            type: 'input',
+            name: 'number',
+            message: 'What is your team managers office number?',
+            when: function (answers) {
+                return answers.emptype === 'Manager';
+              },
+          }, 
+          {
+            type: "confirm",
+            name: "addmore",
+            message: "Would you like to add more employee?",      
+            
+
+          } 
     ])
-    .then((engineerInfo) => {
-        const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
-        employeeData.push(newEngineer); 
+    .then((empInfo) => {
+        if(empInfo.emptype === 'Manager')
+        {
+            const newManager = new Manager(empInfo.number,empInfo.name,empInfo.id,empInfo.email);
+            employeeData.push(newManager); 
+
+        }
+
+        else if (empInfo.emptype === 'Engineer'){
+            const newEngineer = new Engineer(empInfo.githubname,empInfo.name,empInfo.id,empInfo.email);
+            employeeData.push(newEngineer);
+
+        }
+
+        else {
+            const newIntern = new Intern(empInfo.school,empInfo.name,empInfo.id,empInfo.email);
+            employeeData.push(newIntern); 
+
+        }
+        
         // console.log(employeeData); 
 
         //if user does not want to add any more team member
-        if(engineerInfo.emptype === 'I dont want to add any more team members'){
+        if(empInfo.addmore){
+            addEmployeeInfo();
+            
+        }
+         else{
             genHTML(employeeData);
-        }
 
-        //if Intern is selected
-        else if (engineerInfo.emptype === 'Intern'){
-            console.log('Intern section');
-            addInternInfo();
-        }
-
-        //if engineer is selected
-        else if (engineerInfo.emptype === 'Engineer'){
-            addEngineerInfo();
-        }
+         }        
         
     });
+
 };
 
+addEmployeeInfo();
 
-//function for adding engineer team member info
-const addInternInfo = () => {
-    return inquirer.prompt ([
-        {
-            type: 'input',
-            name: 'iname',
-            message: 'What is the intern name?', 
-           
-        },
-        {
-            type: 'input',
-            name: 'iid',
-            message: "What is the intern id?",           
-        },
-        {
-            type: 'input',
-            name: 'iemail',
-            message: "What is intern's email.",            
-        },
-        {
-            type: 'input',
-            name: 'ischool',
-            message: "Which school did intern attend",            
-        },
-        {
-            type: "list",
-            name: "emptype",
-            message: "Which type of team member would you like to add?",        
-            choices: ["Engineer", "Intern", "I dont want to add any more team members"]
-        }
-    ])
-    .then((internInfo) => {
-        const newIntern = new Intern(internInfo.ischool,internInfo.iname,internInfo.iid,internInfo.iemail);
-        employeeData.push(newIntern); 
-        // console.log(employeeData); 
-
-        //if user does not want to add any more team member
-        if(internInfo.emptype === 'I dont want to add any more team members'){
-            genHTML(employeeData);
-        }
-
-        //if Intern is selected
-        else if (internInfo.emptype === 'Intern'){
-            console.log('Intern section');
-            addInternInfo();
-        }
-        
-        //if engineer is selected
-        else if (internInfo.emptype === 'Engineer'){
-            addEngineerInfo();
-        }
-        
-    });
-};
