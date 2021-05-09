@@ -2,13 +2,13 @@
 const generateManagerInfo = (manager) => {
     return `
     <div class="col-sm-4 py-2">
-              <div class="card card-body h-100">
+              <div class="card card-body h-100 shadow-lg">
                 <h3 class="card-title">${manager.name} <br> Manager <i class="fas fa-chalkboard-teacher"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${manager.id}</li>
-                  <li class="list-group-item">Email : <a href="mailto:${manager.email}">${manager.email}</a></li>
-                  <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
+                  <li class="list-group-item grp-item">ID : ${manager.id}</li>
+                  <li class="list-group-item grp-item">Email : <a href="mailto:${manager.email}">${manager.email}</a></li>
+                  <li class="list-group-item grp-item">Office Number: ${manager.officeNumber}</li>
                 </ul>
               </div>
           </div>
@@ -20,13 +20,13 @@ const generateManagerInfo = (manager) => {
 const generateEngineerInfo = (engineer) => {
   return `
   <div class="col-sm-4 py-2">
-              <div class="card card-body h-100">
+              <div class="card card-body h-100 shadow-lg">
                 <h3 class="card-title">${engineer.name} <br> Engineer <i class="fas fa-glasses"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${engineer.id}</li>
-                  <li class="list-group-item">Email : <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                  <li class="list-group-item">Github: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></li>
+                  <li class="list-group-item grp-item">ID : ${engineer.id}</li>
+                  <li class="list-group-item grp-item">Email : <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                  <li class="list-group-item grp-item">Github: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></li>
                 </ul>
               </div>
           </div>
@@ -37,13 +37,13 @@ const generateEngineerInfo = (engineer) => {
 const generateInternInfo = (intern) => {
   return `
   <div class="col-sm-4 py-2">
-              <div class="card card-body h-100">
+              <div class="card card-body h-100 shadow-lg">
                 <h3 class="card-title">${intern.name} <br> Intern <i class="fas fa-user-graduate"></i></h3>
                
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID : ${intern.id}</li>
-                  <li class="list-group-item">Email : <a href="mailto:${intern.email}">${intern.email}<a></li>
-                  <li class="list-group-item">School Name: ${intern.school}</li>
+                  <li class="list-group-item grp-item">ID : ${intern.id}</li>
+                  <li class="list-group-item grp-item">Email : <a href="mailto:${intern.email}">${intern.email}<a></li>
+                  <li class="list-group-item grp-item">School Name: ${intern.school}</li>
                 </ul>
               </div>
           </div>
@@ -65,12 +65,13 @@ const generateTeamProfile =  (employeeInfo) => {
         <title>Document</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
+        <link rel="stylesheet" href="style.css" />
+        </head>
     <body>
     
       <!-- page header -->
-        <div class="jumbotron">
-            <h1 class="display-4">My Team</h1>        
+        <div class="jumbotron page-header">
+            <h1 class="display-4 title-header">My Team  <i class="fas fa-users"></i></h1>        
         </div>
     
         <div class="container">
@@ -80,7 +81,7 @@ const generateTeamProfile =  (employeeInfo) => {
          
 
          for (let i = 0; i < employeeInfo.length; i++) {
-          console.log(employeeInfo[i].name);
+          // console.log(employeeInfo[i].name);
           const employee = employeeInfo[i];
 
           const role = employeeInfo[i].getRole();
