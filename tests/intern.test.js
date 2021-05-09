@@ -1,6 +1,6 @@
 const Intern = require("../lib/Intern");
 
-describe('Employee', () => {
+describe('Intern', () => {
 
     it("Can set school via constructor", () => {
         const schoolValue = "USYD";
