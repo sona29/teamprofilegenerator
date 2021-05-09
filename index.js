@@ -95,12 +95,12 @@ inquirer
         {
             type: 'input',
             name: 'eemail',
-            message: "Please enter the engineer's email.",            
+            message: "What is engineer's email address?",            
         },
         {
             type: 'input',
             name: 'githubname',
-            message: "What is engineers github name",            
+            message: "What is engineers github name?",            
         },
         {
             type: "list",
@@ -112,16 +112,20 @@ inquirer
     .then((engineerInfo) => {
         const newEngineer = new Engineer(engineerInfo.githubname,engineerInfo.ename,engineerInfo.eid,engineerInfo.eemail);
         employeeData.push(newEngineer); 
-        console.log(employeeData); 
+        // console.log(employeeData); 
+
+        //if user does not want to add any more team member
         if(engineerInfo.emptype === 'I dont want to add any more team members'){
             genHTML(employeeData);
         }
 
+        //if Intern is selected
         else if (engineerInfo.emptype === 'Intern'){
             console.log('Intern section');
             addInternInfo();
         }
 
+        //if engineer is selected
         else if (engineerInfo.emptype === 'Engineer'){
             addEngineerInfo();
         }
@@ -164,9 +168,22 @@ const addInternInfo = () => {
     .then((internInfo) => {
         const newIntern = new Intern(internInfo.ischool,internInfo.iname,internInfo.iid,internInfo.iemail);
         employeeData.push(newIntern); 
-        console.log(employeeData); 
+        // console.log(employeeData); 
+
+        //if user does not want to add any more team member
         if(internInfo.emptype === 'I dont want to add any more team members'){
             genHTML(employeeData);
+        }
+
+        //if Intern is selected
+        else if (internInfo.emptype === 'Intern'){
+            console.log('Intern section');
+            addInternInfo();
+        }
+        
+        //if engineer is selected
+        else if (internInfo.emptype === 'Engineer'){
+            addEngineerInfo();
         }
         
     });
