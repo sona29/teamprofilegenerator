@@ -23,5 +23,11 @@
   "homepage": "https://github.com/sona29/teamprofilegenerator#readme",
   "dependencies": {
     "inquirer": "^8.0.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
