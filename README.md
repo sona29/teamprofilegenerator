@@ -21,15 +21,15 @@ This project generates team profile using node.js and inquirer. It takes informa
 
 ## Desktop
 
-![alt text](images/desktop.PNG)
+![alt text](images/desktop.png)
 
 ## Ipad pro
 
-![alt text](images/ipad.PNG)
+![alt text](images/ipad.png)
 
 ## Iphone X
 
-![alt text](images/mobile.PNG)
+![alt text](images/mobile.png)
 
 ## Installation
 
