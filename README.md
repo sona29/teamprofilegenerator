@@ -1,4 +1,4 @@
-# Professional Readme Generator
+# Object-Oriented Programming: Team Profile Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -13,7 +13,7 @@
 
 ## Description
 
-This project generates professional README file using node.js. The readme file is the first thing that a person sees when they visit a repo on GitHub. A good quality readme represents polished Github profile. This readme generates professional readme file by entering answers to few questions. This includes what the app is for, how to use the app, how to install it, how to report issues, and how to make contributions.
+This project generates team profile using node.js and inquirer. It takes information about employee's basic information and then generate HTML webpage that displays the information of each employee. When the application is started it asks which type of employee you want to add. There are three types of option available. They are Manager, Engineer and Intern. Once option is chosen, then related questions are asked. This application uses Jest for running unit tests and Inquirer for collecting input from the user.
 
 ## Installation
 
