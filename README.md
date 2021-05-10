@@ -61,4 +61,4 @@ Email: sona.shrestha004@gmail.com
 
 ## Walk-through Video
 
-##### Video: [TeamProfile Generator Walk-through](https://drive.google.com/file/d/1dk3zMbDOfFfXLR1BO_7hH6wCoytE8Msn/view)
+##### Video: [TeamProfile Generator Walk-through](https://drive.google.com/file/d/1xpg35eNshSvpFfMv1DTstRLhJj6fJBHl/view)
