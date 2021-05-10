@@ -13,7 +13,23 @@
 
 ## Description
 
-This project generates team profile using node.js and inquirer. It takes information about employee's basic information and then generate HTML webpage that displays the information of each employee. When the application is started it asks which type of employee you want to add. There are three types of option available. They are Manager, Engineer and Intern. Once option is chosen, then related questions are asked. This application uses Jest for running unit tests and Inquirer for collecting input from the user.
+This project generates team profile using node.js and inquirer. It takes information about employee's basic information and then generate HTML responsive webpage that displays the information of each employee. When the application is started it asks which type of employee you want to add. There are three types of option available. They are Manager, Engineer and Intern. Once option is chosen, then related questions are asked. This application uses Jest for running unit tests and Inquirer for collecting input from the user.
+
+## Mock up
+
+- The following image shows the web application's appearance in different devices
+
+## Desktop
+
+![alt text](images/desktop.PNG)
+
+## Ipad pro
+
+![alt text](images/ipad.PNG)
+
+## Iphone X
+
+![alt text](images/mobile.PNG)
 
 ## Installation
 
@@ -42,3 +58,7 @@ Email: sona.shrestha004@gmail.com
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Walk-through Video
+
+##### Video: [TeamProfile Generator Walk-through](https://drive.google.com/file/d/1dk3zMbDOfFfXLR1BO_7hH6wCoytE8Msn/view)
